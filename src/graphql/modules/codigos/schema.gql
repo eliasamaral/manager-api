@@ -1,0 +1,28 @@
+type Codigo {
+  id: ID!
+  code: Float!
+  description: String!
+  peso: Float
+  fator: Float
+  tipo: String
+}
+
+input CodigoInput {
+  code: Float
+  description: String
+  peso: Float
+  fator: Float
+  tipo: String
+
+}
+
+type Query {
+  codigos: [Codigo!]!
+  codigo(code: Float!): Codigo!
+}
+
+type Mutation {
+  createCodigo(data: CodigoInput!): Codigo!
+  updateCodigo(id: ID!, data: CodigoInput): Codigo!
+  deleteCodigo(id: ID!): Boolean
+}

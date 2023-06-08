@@ -1,0 +1,88 @@
+type Material {
+  id: ID
+  codigo: Int
+  descricao: String
+  qnt: Int
+}
+
+type Srv {
+  id: ID
+  codigo: Int
+  descricao: String
+  qntOrcada: Int
+  qntExecutada: Int
+}
+
+type Pendencia {
+  id: ID
+  descricao: String
+  createdAt: String
+}
+
+type Ponto {
+  id: ID
+  tipo: String
+  status: String
+  material: [Material]
+  srv: [Srv]
+  pendencias: [Pendencia]
+}
+
+type Projeto {
+  id: ID!
+  projeto: Float
+  diagrama: Int
+  apelido: String
+  cidade: String
+  csd: String
+  fiscal: String
+  tipo: String
+  pontos: [Ponto]
+}
+
+input MaterialInput {
+  codigo: Int
+  descricao: String
+  qnt: Int!
+}
+
+input SrvInput {
+  codigo: Int
+  descricao: String
+  qntOrcada: Int
+  qntExecutada: Int
+}
+
+input PendenciaInput {
+  descricao: String
+  createdAt: String
+}
+
+input PontoInput {
+  tipo: String
+  status: String
+  material: [MaterialInput]
+  srv: [SrvInput]
+  pendencias: [PendenciaInput]
+}
+
+input ProjetoInput {
+  projeto: Float
+  diagrama: Int
+  apelido: String
+  cidade: String
+  csd: String
+  fiscal: String
+  tipo: String
+  pontos: [PontoInput]
+}
+
+type Query {
+  getProjetos: [Projeto!]!
+  getProjeto(projeto: Int): Projeto!
+}
+
+type Mutation {
+  createProjeto(data: ProjetoInput!): Projeto!
+}
+

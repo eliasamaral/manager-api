@@ -1,0 +1,51 @@
+type RDO {
+  id: ID!
+  projeto: Float
+  encarregado: String
+  climaManha: String
+  climaTarde: String
+  encarregadoQuantidade: Int
+  motoristaQuantidade: Int
+  eletricistaQuantidade: Int
+  auxiliarQuantidade: Int
+  observacoes: String
+  dataDaProducao: String
+  createdAt: String
+  servicos: [SRV]
+}
+
+type SRV {
+  id: ID!
+  codigo: Float
+  descricao: String
+  quantidade: Int
+}
+
+input RDOInput {
+  projeto: Float
+  encarregado: String
+  climaManha: String
+  climaTarde: String
+  encarregadoQuantidade: Int
+  motoristaQuantidade: Int
+  eletricistaQuantidade: Int
+  auxiliarQuantidade: Int
+  observacoes: String
+  dataDaProducao: String
+  createdAt: String
+  servicos: [SRVInput]
+}
+
+input SRVInput {
+  codigo: Float
+  descricao: String
+  quantidade: Int
+}
+
+type Query {
+  getRDOS: [RDO!]!
+}
+
+type Mutation {
+  createRDO(data: RDOInput): RDO
+}
