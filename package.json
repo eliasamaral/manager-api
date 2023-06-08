@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon --exec babel-node src/index.js -e js,gql"
+    "dev": "npx nodemon --exec babel-node src/index.js -e js,gql",
+    "build": "tsup src"
   },
   "dependencies": {
     "@apollo/client": "^3.7.15",
@@ -22,6 +22,7 @@
     "@babel/preset-env": "^7.21.5",
     "@graphql-codegen/cli": "^3.3.1",
     "dotenv": "^16.1.4",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "tsup": "^6.7.0"
   }
 }

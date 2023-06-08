@@ -13,4 +13,4 @@ mongoose.connect(
 );
 
 const app = new ApolloServer({ typeDefs, resolvers });
-app.listen().then(({ url }) => console.log(`Server is runnig on ${url}🚀. Oque? Sem erros? Não é possível.`));
+app.listen().then(({ url }) => console.log(`Server is runnig on ${url}🚀.`));
