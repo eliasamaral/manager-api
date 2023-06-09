@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "npx nodemon --exec babel-node src/index.js -e js,gql",
-    "build": "yarn run build",
+    "build": "babel src -d lib",
     "start" : "yarn run dev"
   },
   "dependencies": {
