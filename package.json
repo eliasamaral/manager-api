@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "npx nodemon --exec babel-node src/index.js -e js,gql",
-    "build": "yarn run build"
+    "build": "yarn run build",
+    "start" : "yarn run dev"
   },
   "dependencies": {
     "@apollo/client": "^3.7.15",
