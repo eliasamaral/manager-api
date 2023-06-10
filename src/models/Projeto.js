@@ -37,6 +37,12 @@ const Schema = new mongoose.Schema({
         type: String,
         required: true,
       },
+      ref: {
+        type: Number,
+        required: true,
+      },
+
+
       material: [
         {
           codigo: {

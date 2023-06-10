@@ -23,6 +23,7 @@ type Ponto {
   id: ID
   tipo: String
   status: String
+  ref: Int 
   material: [Material]
   srv: [Srv]
   pendencias: [Pendencia]
@@ -61,6 +62,7 @@ input PendenciaInput {
 input PontoInput {
   tipo: String
   status: String
+  ref: Int 
   material: [MaterialInput]
   srv: [SrvInput]
   pendencias: [PendenciaInput]
