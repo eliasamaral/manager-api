@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "npx nodemon --exec babel-node src/index.js -e js,gql",
     "build": "babel src -d lib",
-    "start" : "yarn run dev"
+    "start": "yarn run dev"
   },
   "dependencies": {
     "@apollo/client": "^3.7.15",
@@ -26,7 +26,6 @@
     "@babel/preset-env": "^7.21.5",
     "@graphql-codegen/cli": "^3.3.1",
     "dotenv": "^16.1.4",
-    "nodemon": "^2.0.22",
-    "tsup": "^6.7.0"
+    "nodemon": "^2.0.22"
   }
 }

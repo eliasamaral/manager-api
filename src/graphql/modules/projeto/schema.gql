@@ -79,7 +79,7 @@ input ProjetoInput {
 
 type Query {
   getProjetos: [Projeto!]!
-  getProjeto(projeto: Int): Projeto!
+  getProjeto(projeto: Float!): Projeto!
 }
 
 type Mutation {

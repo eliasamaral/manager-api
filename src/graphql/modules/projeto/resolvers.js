@@ -5,11 +5,11 @@ export default {
     getProjetos: async () => await Projeto.find(),
     getProjeto: async (_, { projeto }) => {
       try {
-        const projeto = await Projeto.findOne(projeto);
-        if (!projeto) {
+        const e = await Projeto.findOne({ projeto });
+        if (!e) {
           throw new Error("Projeto não encontrado");
         }
-        return projeto;
+        return e;
       } catch (error) {
         console.error(error);
         throw new Error("Erro ao buscar o projeto");
