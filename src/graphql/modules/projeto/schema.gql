@@ -5,6 +5,13 @@ type Material {
   qnt: Int
 }
 
+type RDODigital {
+  id: ID
+  codigo: Float
+  descricao: String
+  planejado: Float
+}
+
 type Srv {
   id: ID
   codigo: Int
@@ -23,7 +30,7 @@ type Ponto {
   id: ID
   tipo: String
   status: String
-  ref: Int 
+  ref: Int
   material: [Material]
   srv: [Srv]
   pendencias: [Pendencia]
@@ -32,19 +39,27 @@ type Ponto {
 type Projeto {
   id: ID!
   projeto: Float
-  diagrama: Int
-  apelido: String
+  diagrama: Float
+  contrato: Float
+  local: String
   cidade: String
   csd: String
   fiscal: String
   tipo: String
+  RDODigital: [RDODigital]
   pontos: [Ponto]
 }
 
 input MaterialInput {
   codigo: Int
   descricao: String
-  qnt: Int!
+  qnt: Int
+}
+
+input RDODigitalInput {
+  codigo: Float
+  descricao: String
+  planejado: Float
 }
 
 input SrvInput {
@@ -62,7 +77,7 @@ input PendenciaInput {
 input PontoInput {
   tipo: String
   status: String
-  ref: Int 
+  ref: Int
   material: [MaterialInput]
   srv: [SrvInput]
   pendencias: [PendenciaInput]
@@ -70,12 +85,14 @@ input PontoInput {
 
 input ProjetoInput {
   projeto: Float
-  diagrama: Int
-  apelido: String
+  diagrama: Float
+  contrato: Float
+  local: String
   cidade: String
   csd: String
   fiscal: String
   tipo: String
+  RDODigital: [RDODigitalInput]
   pontos: [PontoInput]
 }
 
@@ -86,5 +103,6 @@ type Query {
 
 type Mutation {
   createProjeto(data: ProjetoInput!): Projeto!
+  updateProjeto(id: ID!, data: ProjetoInput): Projeto!
+  deleteProjeto(id: ID!): Boolean
 }
-

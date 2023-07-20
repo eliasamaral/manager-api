@@ -1,15 +1,18 @@
 type RDO {
   id: ID!
   projeto: Float
+  diagrama: Float
+  local: String
   encarregado: String
-  climaManha: String
-  climaTarde: String
+  dataDaProducao: String
   encarregadoQuantidade: Int
   motoristaQuantidade: Int
   eletricistaQuantidade: Int
   auxiliarQuantidade: Int
+  climaManha: String
+  climaTarde: String
   observacoes: String
-  dataDaProducao: String
+  
   createdAt: String
   servicos: [SRV]
 }
@@ -23,6 +26,8 @@ type SRV {
 
 input RDOInput {
   projeto: Float
+  diagrama: Float
+  local: String
   encarregado: String
   climaManha: String
   climaTarde: String

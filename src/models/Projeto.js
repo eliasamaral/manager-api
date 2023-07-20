@@ -10,7 +10,11 @@ const Schema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  apelido: {
+  contrato:{
+    type: Number,
+    required: true,
+  },
+  local: {
     type: String,
     required: true,
   },
@@ -27,35 +31,40 @@ const Schema = new mongoose.Schema({
   tipo: {
     type: String,
   },
+  RDODigital: [
+    {
+      codigo: {
+        type: Number,
+      },
+      descricao: {
+        type: String,
+      },
+      planejado: {
+        type: Number,
+      },
+    },
+  ],
   pontos: [
     {
       tipo: {
         type: String,
-        required: true,
       },
       status: {
         type: String,
-        required: true,
       },
       ref: {
         type: Number,
-        required: true,
       },
-
-
       material: [
         {
           codigo: {
             type: Number,
-            required: true,
           },
           descricao: {
             type: String,
-            required: true,
           },
           qnt: {
             type: Number,
-            required: true,
           },
         },
       ],
@@ -63,19 +72,15 @@ const Schema = new mongoose.Schema({
         {
           codigo: {
             type: Number,
-            required: true,
           },
           descricao: {
             type: String,
-            required: true,
           },
           qntOrcada: {
             type: Number,
-            required: true,
           },
           qntExecutada: {
             type: Number,
-            required: true,
           },
         },
       ],

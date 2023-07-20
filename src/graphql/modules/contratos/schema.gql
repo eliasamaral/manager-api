@@ -1,0 +1,23 @@
+type Contrato {
+  id: ID!
+  numero: Float!
+  fator: Float!
+  abrangencia: [String!]
+}
+
+input ContratoInput {
+  numero: Float!
+  fator: Float!
+  abrangencia: [String!]
+}
+
+type Query {
+  contratos: [Contrato!]!
+  contrato(numero: Float!): Contrato!
+}
+
+type Mutation {
+  createContrato(data: ContratoInput!): Contrato!
+  updateContrato(id: ID!, data: ContratoInput): Contrato!
+  deleteContrato(id: ID!): Boolean
+}

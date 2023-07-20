@@ -17,6 +17,12 @@ export default {
     },
   },
   Mutation: {
+    //Buscar Projeto
     createProjeto: (_, { data }) => Projeto.create(data),
+    updateProjeto: async (_, { id, data }) =>
+      await Projeto.findByIdAndUpdate(id, data, { new: true }),
+
+    deleteProjeto: async (_, { id }) =>
+      !!(await Projeto.findByIdAndRemove(id)),
   },
 };
