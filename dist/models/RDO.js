@@ -12,6 +12,12 @@ var Schema = new mongoose.Schema({
   projeto: {
     type: Number
   },
+  diagrama: {
+    type: Number
+  },
+  local: {
+    type: String
+  },
   encarregado: {
     type: String
   },

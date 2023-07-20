@@ -12,7 +12,8 @@ _mongoose["default"].connect("mongodb+srv://".concat(process.env.DB_USER, ":").c
 });
 var app = new _apolloServer.ApolloServer({
   typeDefs: _typeDefs["default"],
-  resolvers: _resolvers["default"]
+  resolvers: _resolvers["default"],
+  cache: "bounded"
 });
 app.listen({
   port: process.env.PORT || 4000

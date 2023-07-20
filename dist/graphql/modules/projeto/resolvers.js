@@ -34,23 +34,25 @@ var _default = {
     }(),
     getProjeto: function () {
       var _getProjeto = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(_, _ref) {
-        var projeto, _projeto;
+        var projeto, e;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
               projeto = _ref.projeto;
               _context2.prev = 1;
               _context2.next = 4;
-              return _Projeto["default"].findOne(_projeto);
+              return _Projeto["default"].findOne({
+                projeto: projeto
+              });
             case 4:
-              _projeto = _context2.sent;
-              if (_projeto) {
+              e = _context2.sent;
+              if (e) {
                 _context2.next = 7;
                 break;
               }
               throw new Error("Projeto não encontrado");
             case 7:
-              return _context2.abrupt("return", _projeto);
+              return _context2.abrupt("return", e);
             case 10:
               _context2.prev = 10;
               _context2.t0 = _context2["catch"](1);
@@ -69,10 +71,57 @@ var _default = {
     }()
   },
   Mutation: {
+    //Buscar Projeto
     createProjeto: function createProjeto(_, _ref2) {
       var data = _ref2.data;
       return _Projeto["default"].create(data);
-    }
+    },
+    updateProjeto: function () {
+      var _updateProjeto = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(_, _ref3) {
+        var id, data;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              id = _ref3.id, data = _ref3.data;
+              _context3.next = 3;
+              return _Projeto["default"].findByIdAndUpdate(id, data, {
+                "new": true
+              });
+            case 3:
+              return _context3.abrupt("return", _context3.sent);
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3);
+      }));
+      function updateProjeto(_x3, _x4) {
+        return _updateProjeto.apply(this, arguments);
+      }
+      return updateProjeto;
+    }(),
+    deleteProjeto: function () {
+      var _deleteProjeto = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(_, _ref4) {
+        var id;
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              id = _ref4.id;
+              _context4.next = 3;
+              return _Projeto["default"].findByIdAndRemove(id);
+            case 3:
+              return _context4.abrupt("return", !!_context4.sent);
+            case 4:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4);
+      }));
+      function deleteProjeto(_x5, _x6) {
+        return _deleteProjeto.apply(this, arguments);
+      }
+      return deleteProjeto;
+    }()
   }
 };
 exports["default"] = _default;

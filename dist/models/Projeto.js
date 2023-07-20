@@ -14,7 +14,11 @@ var Schema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  apelido: {
+  contrato: {
+    type: Number,
+    required: true
+  },
+  local: {
     type: String,
     required: true
   },
@@ -31,45 +35,50 @@ var Schema = new mongoose.Schema({
   tipo: {
     type: String
   },
+  RDODigital: [{
+    codigo: {
+      type: Number
+    },
+    descricao: {
+      type: String
+    },
+    planejado: {
+      type: Number
+    }
+  }],
   pontos: [{
     tipo: {
-      type: String,
-      required: true
+      type: String
     },
     status: {
-      type: String,
-      required: true
+      type: String
+    },
+    ref: {
+      type: Number
     },
     material: [{
       codigo: {
-        type: Number,
-        required: true
+        type: Number
       },
       descricao: {
-        type: String,
-        required: true
+        type: String
       },
       qnt: {
-        type: Number,
-        required: true
+        type: Number
       }
     }],
     srv: [{
       codigo: {
-        type: Number,
-        required: true
+        type: Number
       },
       descricao: {
-        type: String,
-        required: true
+        type: String
       },
       qntOrcada: {
-        type: Number,
-        required: true
+        type: Number
       },
       qntExecutada: {
-        type: Number,
-        required: true
+        type: Number
       }
     }],
     pendencias: [{
