@@ -8,9 +8,8 @@
   },
   "scripts": {
     "dev": "npx nodemon --exec babel-node src/index.js -e js,gql",
-    "build": "babel src -d lib",
     "start": "yarn run babel-node src/index.js",
-    "vercel-build": "build"
+    "build": "babel build --output public"
 
   },
   "dependencies": {
