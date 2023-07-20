@@ -1,6 +1,6 @@
 import { ApolloServer } from "apollo-server";
-import typeDefs from "./graphql/typeDefs";
-import resolvers from "./graphql/resolvers";
+import typeDefs from "./graphql/typeDefs.js";
+import resolvers from "./graphql/resolvers.js";
 import mongoose from "mongoose";
 require("dotenv").config();
 

@@ -1,5 +1,5 @@
 type RDO {
-  id: ID!
+  _id: ID!
   projeto: Float
   diagrama: Float
   local: String
@@ -49,6 +49,7 @@ input SRVInput {
 
 type Query {
   getRDOS: [RDO!]!
+  getRDO(_id: ID!): RDO!
 }
 
 type Mutation {
