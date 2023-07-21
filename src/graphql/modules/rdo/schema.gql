@@ -18,7 +18,7 @@ type RDO {
 }
 
 type SRV {
-  id: ID!
+  _id: ID!
   codigo: Float
   descricao: String
   quantidade: Int
