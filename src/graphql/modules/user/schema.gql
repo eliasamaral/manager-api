@@ -1,0 +1,30 @@
+type User {
+  _id: ID!
+  matricula: Float
+  email: String
+  senha: String
+  administrador: Boolean
+  token: String
+}
+
+input UserInput {
+  matricula: Float
+  email: String
+  senha: String
+  administrador: Boolean
+  token: String
+}
+
+input LoginInput {
+  matricula: Float
+  senha: String
+}
+
+type Query {
+  user(_id: ID!): User
+}
+
+type Mutation {
+  createUser(data: UserInput!): User
+  loginUser(data: LoginInput!): User
+}
