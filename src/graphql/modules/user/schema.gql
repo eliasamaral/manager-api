@@ -25,6 +25,6 @@ type Query {
 }
 
 type Mutation {
-  createUser(data: UserInput!): User
-  loginUser(data: LoginInput!): User
+  createUser(data: UserInput): User
+  loginUser(data: LoginInput): User
 }
