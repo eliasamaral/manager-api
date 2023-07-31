@@ -58,7 +58,7 @@ export default {
       };
     },
 
-    loginUser: async (_, { data: { matricula, senha } }) => {
+    loginUser: async (_, { loginInput: { matricula, senha } }) => {
       const user = await User.findOne({ matricula });
 
       if (user && (await bcrypt.compare(senha, user.senha))) {

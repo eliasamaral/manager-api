@@ -1,6 +1,6 @@
 type User {
   _id: ID!
-  matricula: Float
+  matricula: String
   email: String
   senha: String
   administrador: Boolean
@@ -8,7 +8,7 @@ type User {
 }
 
 input UserInput {
-  matricula: Float
+  matricula: String
   email: String
   senha: String
   administrador: Boolean
@@ -16,7 +16,7 @@ input UserInput {
 }
 
 input LoginInput {
-  matricula: Float
+  matricula: String
   senha: String
 }
 
@@ -26,5 +26,5 @@ type Query {
 
 type Mutation {
   createUser(data: UserInput): User
-  loginUser(data: LoginInput): User
+  loginUser(loginInput: LoginInput): User
 }
