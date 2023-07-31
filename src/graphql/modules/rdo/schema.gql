@@ -21,7 +21,7 @@ type SRV {
   _id: ID!
   codigo: Float
   descricao: String
-  quantidade: Int
+  quantidade: Float
 }
 
 input RDOInput {
