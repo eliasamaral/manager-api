@@ -12,7 +12,6 @@ type RDO {
   climaManha: String
   climaTarde: String
   observacoes: String
-  
   createdAt: String
   servicos: [SRV]
 }
