@@ -3,6 +3,9 @@ import { ApolloError } from "apollo-server";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
+require("dotenv").config();
+
+
 export default {
   Query: {
     user: async (_, { _id }) => User.findById(_id),
@@ -44,7 +47,7 @@ export default {
           user_id: newUser.id,
           email,
         },
-        "UNSAFE_STRING",
+       `${process.env.JWT_SECRET}`,
         { expiresIn: "2h" }
       );
 
@@ -67,7 +70,7 @@ export default {
             user_id: user.id,
             matricula,
           },
-          "UNSAFE_STRING",
+         `${process.env.JWT_SECRET}`,
           { expiresIn: "2h" }
         );
 

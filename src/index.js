@@ -13,4 +13,4 @@ mongoose.connect(
 );
 
 const app = new ApolloServer({ typeDefs, resolvers, cache: "bounded"});
-app.listen({port: process.env.PORT || 4000}).then(({ url }) => console.log(`Server is runnig on ${url}🚀.`));
+app.listen({port: process.env.PORT || 4000}).then(({ url }) => console.log(`API is runnig on ${url}🚀.`));
