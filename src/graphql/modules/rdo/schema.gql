@@ -5,15 +5,19 @@ type RDO {
   local: String
   encarregado: String
   dataDaProducao: String
-  encarregadoQuantidade: Int
-  motoristaQuantidade: Int
-  eletricistaQuantidade: Int
-  auxiliarQuantidade: Int
-  climaManha: String
-  climaTarde: String
+  maoDeObra: maoDeObra
+  clima: Clima
   observacoes: String
   createdAt: String
   servicos: [SRV]
+  isFinal: Boolean
+}
+
+type maoDeObra {
+  encarregado: Int
+  motorista: Int
+  eletricista: Int
+  auxiliar: Int
 }
 
 type SRV {
@@ -22,28 +26,40 @@ type SRV {
   descricao: String
   quantidade: Float
 }
+type Clima {
+  manha: String
+  tarde: String
+}
 
 input RDOInput {
   projeto: Float
   diagrama: Float
   local: String
   encarregado: String
-  climaManha: String
-  climaTarde: String
-  encarregadoQuantidade: Int
-  motoristaQuantidade: Int
-  eletricistaQuantidade: Int
-  auxiliarQuantidade: Int
+  maoDeObra: maoDeObraInput
+  clima: ClimaInput
   observacoes: String
   dataDaProducao: String
   createdAt: String
   servicos: [SRVInput]
+  isFinal: Boolean
 }
 
 input SRVInput {
   codigo: Float
   descricao: String
   quantidade: Float
+}
+
+input ClimaInput {
+  manha: String
+  tarde: String
+}
+input maoDeObraInput {
+  encarregado: Int
+  motorista: Int
+  eletricista: Int
+  auxiliar: Int
 }
 
 type Query {
