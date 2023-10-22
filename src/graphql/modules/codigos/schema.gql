@@ -1,28 +1,33 @@
 type Codigo {
-  id: ID!
-  code: Float!
-  description: String!
-  peso: Float
-  fator: Float
-  tipo: String
+  _id: ID
+  code: Float
+  description: String
+  umb: String
+  price: Float
+  type: String
+  factor: Float
+  active: Boolean
 }
 
 input CodigoInput {
   code: Float
   description: String
-  peso: Float
-  fator: Float
-  tipo: String
-
+  umb: String
+  price: Float
+  type: String
+  factor: Float
+  active: Boolean
 }
 
 type Query {
   codigos: [Codigo!]!
   codigo(code: Float!): Codigo!
+  codigoByDescription(description: String!): Codigo!
+  codigoByType(type: String!): [Codigo]!
 }
 
 type Mutation {
   createCodigo(data: CodigoInput!): Codigo!
-  updateCodigo(id: ID!, data: CodigoInput): Codigo!
-  deleteCodigo(id: ID!): Boolean
+  updateCodigo(_id: ID!, data: CodigoInput): Codigo!
+  deleteCodigo(_id: ID!): Boolean
 }

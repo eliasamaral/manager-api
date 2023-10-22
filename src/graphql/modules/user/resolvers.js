@@ -5,7 +5,6 @@ import jwt from "jsonwebtoken";
 
 require("dotenv").config();
 
-
 export default {
   Query: {
     user: async (_, { _id }) => User.findById(_id),
@@ -47,7 +46,7 @@ export default {
           user_id: newUser.id,
           email,
         },
-       `${process.env.JWT_SECRET}`,
+        `${process.env.JWT_SECRET}`,
         { expiresIn: "2h" }
       );
 
@@ -70,7 +69,7 @@ export default {
             user_id: user.id,
             matricula,
           },
-         `${process.env.JWT_SECRET}`,
+          `${process.env.JWT_SECRET}`,
           { expiresIn: "2h" }
         );
 
