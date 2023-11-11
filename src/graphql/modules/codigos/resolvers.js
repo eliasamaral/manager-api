@@ -37,9 +37,9 @@ export default {
       }
     },
 
-    codigoByType: async (_, { type }) => {
+    codigoByType: async (_, { tipo }) => {
       try {
-        const foundCodigo = await Codigo.findOne({ type });
+        const foundCodigo = await Codigo.find({ tipo });
         if (!foundCodigo) {
           throw new Error("Código não encontrado para o tipo fornecido");
         }
