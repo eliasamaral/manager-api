@@ -1,29 +1,29 @@
 import mongoose from "mongoose";
 
 const Schema = new mongoose.Schema({
-  code: {
+  codigo: {
     type: Number,
     required: true,
     unique : true,
   },
-  description: {
+  descricao: {
     type: String,
     required: true,
   },
   umb:{
     type: String,
   },
-  price: {
+  preco: {
     type: Number,
   },
-  type: {
+  tipo: {
     type: String,
   },
-  factor: {
+  fator: {
     type: Number,
   },
-  active: {
-    default: true,
+  ativo: {
+    default: false,
     type: Boolean,
   },
  
