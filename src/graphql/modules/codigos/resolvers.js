@@ -28,12 +28,12 @@ export default {
       try {
         const foundCodigo = await Codigo.findOne({ description });
         if (!foundCodigo) {
-          throw new Error("Código não encontrado para a descrição fornecida");
+          throw new Error("Código não encontrado para a descrição fornecida.");
         }
         return foundCodigo;
       } catch (error) {
         console.error("Erro ao buscar o código por descrição:", error);
-        throw new Error("Erro ao buscar o código por descrição");
+        throw new Error("Erro ao buscar o código por descrição.");
       }
     },
 
@@ -41,12 +41,12 @@ export default {
       try {
         const foundCodigo = await Codigo.find({ tipo });
         if (!foundCodigo) {
-          throw new Error("Código não encontrado para o tipo fornecido");
+          throw new Error("Código não encontrado para o tipo fornecido.");
         }
         return foundCodigo;
       } catch (error) {
         console.error("Erro ao buscar o código por tipo:", error);
-        throw new Error("Erro ao buscar o código por tipo");
+        throw new Error("Erro ao buscar o código por tipo.");
       }
     },
   },
