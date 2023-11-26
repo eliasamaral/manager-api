@@ -51,7 +51,7 @@ type Projeto {
   csd: String
   fiscal: String
   tipo: String
-  coord: [Coord]
+  coord: Coord
   RDODigital: [RDODigital]
   pontos: [Ponto]
 }
@@ -103,7 +103,7 @@ input ProjetoInput {
   csd: String
   fiscal: String
   tipo: String
-  coord: [CoordInput]
+  coord: CoordInput
   RDODigital: [RDODigitalInput]
   pontos: [PontoInput]
 }
