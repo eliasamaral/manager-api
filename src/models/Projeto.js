@@ -31,9 +31,12 @@ const Schema = new mongoose.Schema({
   tipo: {
     type: String,
   },
-  coord:{
-    type: String
-  },
+  coord:[
+    {
+      x: String,
+      y: String
+    }
+  ],
   RDODigital: [
     {
       codigo: {
