@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const Schema = new mongoose.Schema({
-
   projeto: {
     type: Number,
     required: true,
@@ -10,7 +9,7 @@ const Schema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  contrato:{
+  contrato: {
     type: Number,
     required: true,
   },
@@ -31,12 +30,10 @@ const Schema = new mongoose.Schema({
   tipo: {
     type: String,
   },
-  coord:[
-    {
-      x: String,
-      y: String
-    }
-  ],
+  coord: {
+    x: String,
+    y: String,
+  },
   RDODigital: [
     {
       codigo: {
@@ -97,8 +94,8 @@ const Schema = new mongoose.Schema({
           },
           createdAt: {
             type: Date,
-            default: Date.now
-          }
+            default: Date.now,
+          },
         },
       ],
     },
