@@ -14,7 +14,7 @@ const Schema = new mongoose.Schema({
     type: String,
   },
   preco: {
-    type: Number,
+    type: mongoose.Types.Decimal128,
   },
   tipo: {
     type: String,
