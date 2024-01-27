@@ -2,11 +2,13 @@ type Contrato {
   id: ID!
   numero: Float!
   fator: Float!
+  csd: String!
 }
 
 input ContratoInput {
   numero: Float!
   fator: Float!
+  csd: String!
 }
 
 type Query {
