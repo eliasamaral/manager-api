@@ -9,9 +9,7 @@ const Schema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  abrangencia: {
-    type: Array,
-  },
+
 });
 
 export default mongoose.model("Contratos", Schema);

@@ -2,13 +2,11 @@ type Contrato {
   id: ID!
   numero: Float!
   fator: Float!
-  abrangencia: [String!]
 }
 
 input ContratoInput {
   numero: Float!
   fator: Float!
-  abrangencia: [String!]
 }
 
 type Query {
