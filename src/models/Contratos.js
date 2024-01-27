@@ -9,6 +9,11 @@ const Schema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  csd: {
+    type: String,
+    required: true,
+  },
+
 
 });
 
