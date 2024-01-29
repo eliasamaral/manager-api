@@ -51,6 +51,7 @@ type Projeto {
   csd: String
   fiscal: String
   tipo: String
+  status: Float
   coord: Coord
   RDODigital: [RDODigital]
   pontos: [Ponto]
@@ -103,6 +104,7 @@ input ProjetoInput {
   csd: String
   fiscal: String
   tipo: String
+  status: Float
   coord: CoordInput
   RDODigital: [RDODigitalInput]
   pontos: [PontoInput]
@@ -117,4 +119,6 @@ type Mutation {
   createProjeto(data: ProjetoInput!): Projeto!
   updateProjeto(id: ID!, data: ProjetoInput): Projeto!
   deleteProjeto(id: ID!): Boolean
+
+  updateStatus(id: ID!, status: Float): Projeto!
 }

@@ -49,5 +49,35 @@ export default {
         throw new Error("Erro ao excluir o projeto");
       }
     },
+
+    updateStatus: async (_, { id, status }) => {
+      try {
+        // Obtenha o projeto atual do banco de dados
+        const projetoAtual = await Projeto.findById(id);
+    
+        if (!projetoAtual) {
+          throw new Error("Projeto não encontrado");
+        }
+    
+        // Verifique se o novo status é 1 maior ou 1 menor que o status atual
+        if (status !== projetoAtual.status + 1 && status !== projetoAtual.status - 1) {
+          throw new Error("A atualização do status só é permitida para o próximo ou anterior valor sequencial.");
+        }
+    
+        // Atualize o status no banco de dados
+        const projetoAtualizado = await Projeto.findByIdAndUpdate(id, { status }, { new: true });
+    
+        if (!projetoAtualizado) {
+          throw new Error("Erro ao atualizar o status");
+        }
+    
+        return projetoAtualizado;
+      } catch (error) {
+        console.error("Erro ao atualizar o status:", error);
+        throw new Error("Erro ao atualizar o status");
+      }
+    },
+    
+    
   },
 };
