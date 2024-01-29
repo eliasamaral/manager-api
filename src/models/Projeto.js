@@ -30,6 +30,10 @@ const Schema = new mongoose.Schema({
   tipo: {
     type: String,
   },
+  status: {
+    type: Number,
+    default: -1
+  },
   coord: {
     x: String,
     y: String,
