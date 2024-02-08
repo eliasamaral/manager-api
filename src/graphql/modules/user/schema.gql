@@ -1,30 +1,35 @@
 type User {
   _id: ID!
-  matricula: String
   email: String
   senha: String
-  administrador: Boolean
   token: String
+  name: String
 }
 
 input UserInput {
-  matricula: String
   email: String
   senha: String
-  administrador: Boolean
   token: String
+  name: String
 }
 
 input LoginInput {
-  matricula: String
   senha: String
+  email: String
+}
+
+input GetUsersInput {
+  name: String
+  email: String
 }
 
 type Query {
   user(_id: ID!): User
+  users: [User]
 }
 
 type Mutation {
   createUser(data: UserInput): User
   loginUser(loginInput: LoginInput): User
+  loginFromEmail(loginInput: LoginInput): User
 }

@@ -8,22 +8,12 @@ require("dotenv").config();
 export default {
   Query: {
     user: async (_, { _id }) => User.findById(_id),
+    users: async () => await User.find(),
   },
 
   Mutation: {
-    createUser: async (
-      _,
-      { data: { matricula, email, senha, administrador } }
-    ) => {
-      const oldMatricula = await User.findOne({ matricula });
+    createUser: async (_, { data: { email, senha, name } }) => {
       const oldEmail = await User.findOne({ email });
-
-      if (oldMatricula) {
-        throw new ApolloError(
-          `A matricula ${matricula} ja existe`,
-          "USER_ALREADY_EXIST"
-        );
-      }
 
       if (oldEmail) {
         throw new ApolloError(
@@ -35,10 +25,9 @@ export default {
       let senhaEncriptada = await bcrypt.hash(senha, 10);
 
       const newUser = new User({
-        matricula: matricula,
-        email: email.toLowerCase(),
+        email: email.trim().toLowerCase(),
         senha: senhaEncriptada,
-        administrador: administrador,
+        name: name,
       });
 
       const token = jwt.sign(
@@ -81,6 +70,29 @@ export default {
         };
       } else {
         throw new ApolloError("Senha incorreta", "INCORRECT_PASSWORD");
+      }
+    },
+
+    loginFromEmail: async (_, { loginInput: { email } }) => {
+      const user = await User.findOne({ email });
+
+      if (user && email === user.email) {
+        const token = jwt.sign(
+          {
+            user_id: user.id,
+          },
+          `${process.env.JWT_SECRET}`,
+          { expiresIn: "2h" }
+        );
+
+        user.token = token;
+
+        return {
+          id: user.id,
+          ...user._doc,
+        };
+      } else {
+        throw new ApolloError("Email incorreto", "INCORRECT_EMAIL");
       }
     },
   },
