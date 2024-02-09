@@ -95,5 +95,7 @@ export default {
         throw new ApolloError("Email incorreto", "INCORRECT_EMAIL");
       }
     },
+    deleteUser: async (_, { _id }) => !!(await User.findByIdAndRemove(_id)),
+
   },
 };
