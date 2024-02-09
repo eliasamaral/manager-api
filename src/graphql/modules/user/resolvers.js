@@ -95,7 +95,23 @@ export default {
         throw new ApolloError("Email incorreto", "INCORRECT_EMAIL");
       }
     },
-    deleteUser: async (_, { _id }) => !!(await User.findByIdAndRemove(_id)),
 
+    updateUser: async (_, { _id, data }) => {
+      const userWithSameEmail = await User.findOne({ email: data.email });
+      if (userWithSameEmail && userWithSameEmail._id.toString() !== _id) {
+        throw new ApolloError(
+          `O email ${data.email} já está sendo usado por outro usuário.`,
+          "EMAIL_ALREADY_EXISTS"
+        );
+      }
+
+      const updatedUser = await User.findByIdAndUpdate(_id, data, {
+        new: true,
+      });
+
+      return updatedUser;
+    },
+
+    deleteUser: async (_, { _id }) => !!(await User.findByIdAndRemove(_id)),
   },
 };
