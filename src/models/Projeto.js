@@ -15,30 +15,23 @@ const Schema = new mongoose.Schema({
   },
   local: {
     type: String,
-    required: true,
   },
   cidade: {
     type: String,
-    required: true,
   },
-  csd: {
-    type: String,
-  },
-  fiscal: {
-    type: String,
-  },
+
   tipo: {
     type: String,
   },
   status: {
     type: Number,
-    default: 0
+    default: 0,
   },
   coord: {
     x: String,
     y: String,
   },
-  RDODigital: [
+  srv: [
     {
       codigo: {
         type: Number,
@@ -46,7 +39,7 @@ const Schema = new mongoose.Schema({
       descricao: {
         type: String,
       },
-      planejado: {
+      qntOrcada: {
         type: Number,
       },
     },

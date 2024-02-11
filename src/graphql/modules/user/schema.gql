@@ -32,5 +32,7 @@ type Mutation {
   createUser(data: UserInput): User
   loginUser(loginInput: LoginInput): User
   loginFromEmail(loginInput: LoginInput): User
+  updateUser(_id: ID!, data: UserInput): User!
+
   deleteUser(_id: ID!): Boolean
 }
