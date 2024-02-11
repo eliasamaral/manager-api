@@ -9,7 +9,7 @@ type Srv {
   id: ID
   codigo: Int
   descricao: String
-  qntOrcada: Int
+  qntOrcada: Float
 }
 
 type Pendencia {
@@ -56,7 +56,7 @@ input MaterialInput {
 input SrvInput {
   codigo: Int
   descricao: String
-  qntOrcada: Int
+  qntOrcada: Float
 }
 
 input PendenciaInput {
@@ -97,7 +97,7 @@ type Query {
 }
 
 type Mutation {
-  createProjeto(data: ProjetoInput!): Projeto!
+  createProjeto(projetoInput: ProjetoInput!): Projeto!
   updateProjeto(id: ID!, data: ProjetoInput): Projeto!
   deleteProjeto(id: ID!): Boolean
 

@@ -26,9 +26,9 @@ export default {
   },
 
   Mutation: {
-    createProjeto: async (_, { data }) => {
+    createProjeto: async (_, { projetoInput }) => {
       try {
-        const novoProjeto = await Projeto.create(data);
+        const novoProjeto = await Projeto.create(projetoInput);
         return novoProjeto;
       } catch (error) {
         console.error("Erro ao criar o projeto:", error);
@@ -55,7 +55,7 @@ export default {
       }
     },
 
-    deleteProjeto: async (_, { id }, { Projeto }) => {
+    deleteProjeto: async (_, { id }) => {
       try {
         const deletedProjeto = await Projeto.findByIdAndRemove(id);
         if (!deletedProjeto) {
@@ -70,7 +70,7 @@ export default {
       }
     },
 
-    updateStatus: async (_, { id, status }, { Projeto }) => {
+    updateStatus: async (_, { id, status }) => {
       try {
         const projetoAtual = await Projeto.findById(id);
         if (!projetoAtual) {
