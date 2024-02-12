@@ -86,7 +86,7 @@ input ProjetoInput {
   cidade: String
   tipo: String
   status: Float
-  coord: [CoordInput]
+  coord: CoordInput
   srv: [SrvInput]!
   pontos: [PontoInput]
 }

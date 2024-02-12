@@ -27,10 +27,7 @@ const Schema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  coord: {
-    x: String,
-    y: String,
-  },
+  coord: { x: String, y: String },
   srv: [
     {
       codigo: {
