@@ -38,7 +38,7 @@ export default {
       }
     },
 
-    updateProjeto: async (_, { id, data }, { Projeto }) => {
+    updateProjeto: async (_, { id, data }) => {
       try {
         const projetoAtualizado = await Projeto.findByIdAndUpdate(id, data, {
           new: true,
@@ -46,7 +46,7 @@ export default {
         if (!projetoAtualizado) {
           throw new ApolloError("Projeto não encontrado para atualização.");
         }
-        return projetoAtualizado;
+        return true;
       } catch (error) {
         console.error("Erro ao atualizar o projeto:", error);
         throw new ApolloError(
