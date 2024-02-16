@@ -35,15 +35,15 @@ type Coord {
 
 type Projeto {
   id: ID!
-  projeto: Float!
-  diagrama: Float!
-  contrato: Float!
+  projeto: Float
+  diagrama: Float
+  contrato: Float
   local: String
   cidade: String
   tipo: String
   status: Float
   coord: Coord
-  srv: [Srv]!
+  srv: [Srv]
   pontos: [Ponto]
 }
 
@@ -79,15 +79,15 @@ input CoordInput {
 }
 
 input ProjetoInput {
-  projeto: Float!
-  diagrama: Float!
-  contrato: Float!
+  projeto: Float
+  diagrama: Float
+  contrato: Float
   local: String
   cidade: String
   tipo: String
   status: Float
   coord: CoordInput
-  srv: [SrvInput]!
+  srv: [SrvInput]
   pontos: [PontoInput]
 }
 
@@ -98,7 +98,7 @@ type Query {
 
 type Mutation {
   createProjeto(projetoInput: ProjetoInput!): Projeto!
-  updateProjeto(id: ID!, data: ProjetoInput): Projeto!
+  updateProjeto(id: ID!, data: ProjetoInput): Boolean
   deleteProjeto(id: ID!): Boolean
 
   updateStatus(id: ID!, status: Float): Projeto!
