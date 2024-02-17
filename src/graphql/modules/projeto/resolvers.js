@@ -1,5 +1,5 @@
 import Projeto from "../../../models/Projeto";
-import { ApolloError } from "apollo-server";
+import { ApolloError } from "@apollo/server";
 
 export default {
   Query: {

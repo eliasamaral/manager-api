@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "npx nodemon --exec babel-node src/index.js -e js,gql",
-    "build": "babel src -d lib"
+    "build": "babel src -d lib",
+    "start": "babel-node src/index.js"
   },
   "dependencies": {
     "@apollo/client": "^3.7.15",

@@ -1,5 +1,5 @@
 import User from "../../../models/User";
-import { ApolloError } from "apollo-server";
+import { ApolloError } from "@apollo/server";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
