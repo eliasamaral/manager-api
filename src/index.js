@@ -1,4 +1,5 @@
-import { ApolloServer } from "apollo-server";
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
 import typeDefs from "./graphql/typeDefs.js";
 import resolvers from "./graphql/resolvers.js";
 import mongoose from "mongoose";
@@ -12,5 +13,15 @@ mongoose.connect(
   }
 );
 
-const app = new ApolloServer({ typeDefs, resolvers, cache: "bounded", introspection: true});
-app.listen({port: process.env.PORT || 4000}).then(({ url }) => console.log(`API is runnig on ${url}🚀.`));
+const server = new ApolloServer({ typeDefs, resolvers });
+
+async function main () {
+  
+  const { url } = await startStandaloneServer(server, {
+    context: async ({ req }) => ({ token: req.headers.token }),
+    listen: { port: process.env.PORT || 4000 },
+  });
+  console.log(`🚀  Server ready at ${url}`);
+}
+
+main()
