@@ -1,5 +1,5 @@
 import User from "../../../models/User";
-import { ApolloError } from "apollo-server";
+import { ApolloError } from "@apollo/server";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -81,7 +81,7 @@ export default {
           {
             user_id: user.id,
           },
-          `${process.env.JWT_SECRET}`,
+          `${process.env.VITE_JWT_SECRET}`,
           { expiresIn: "2h" }
         );
 
