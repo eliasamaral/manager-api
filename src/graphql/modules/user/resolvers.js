@@ -81,7 +81,7 @@ export default {
           {
             user_id: user.id,
           },
-          `${process.env.JWT_SECRET}`,
+          `${process.env.VITE_JWT_SECRET}`,
           { expiresIn: "2h" }
         );
 
