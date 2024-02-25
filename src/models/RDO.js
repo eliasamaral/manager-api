@@ -5,79 +5,93 @@ const mongoose = require("mongoose");
 const Schema = new mongoose.Schema({
   projeto: {
     type: Number,
-    required: true
+    required: true,
   },
 
   diagrama: {
     type: Number,
-    required: true
+    required: true,
   },
 
   local: {
     type: String,
-    required: true
+    required: true,
   },
   encarregado: {
     type: String,
-    required: true
+    required: true,
   },
   clima: {
     manha: {
       type: String,
-      required: true
+      required: true,
     },
 
     tarde: {
       type: String,
-      required: true
+      required: true,
     },
   },
 
   maoDeObra: {
     encarregado: {
       type: Number,
-      required: true
+      required: true,
     },
     motorista: {
       type: Number,
-      required: true
+      required: true,
     },
     eletricista: {
       type: Number,
-      required: true
+      required: true,
     },
     auxiliar: {
       type: Number,
-      required: true
+      required: true,
     },
   },
 
   observacoes: {
     type: String,
-    required: true
+    required: true,
   },
   dataDaProducao: {
     type: String,
-    required: true
+    required: true,
   },
   createdAt: {
     type: Date,
     required: true,
     default: Date.now,
   },
+
+  fichaTrafo: {
+    estf: { type: String },
+    estfsucata: { type: String },
+    nSerie: { type: String },
+    nSucataSerie: { type: String },
+    NA: { type: String },
+    NB: { type: String },
+    NC: { type: String },
+    AB: { type: String },
+    AC: { type: String },
+    BC: { type: String },
+  },
+
   servicos: [
     {
       codigo: {
         type: Number,
-        required: true
+        required: true,
       },
       descricao: {
         type: String,
-        required: true
+        required: true,
       },
       quantidade: {
         type: Number,
-        required: true
+        required: true,
       },
     },
   ],

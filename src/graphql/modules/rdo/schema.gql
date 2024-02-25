@@ -9,8 +9,22 @@ type RDO {
   clima: Clima
   observacoes: String
   createdAt: String
+  fichaTrafo: FichaTrafo
   servicos: [SRV]
   isFinal: Boolean
+}
+
+type FichaTrafo {
+  estf: String
+  estfsucata: String
+  nSerie: String
+  nSucataSerie: String
+  NA: String
+  NB: String
+  NC: String
+  AB: String
+  AC: String
+  BC: String
 }
 
 type maoDeObra {
@@ -41,6 +55,7 @@ input RDOInput {
   observacoes: String
   dataDaProducao: String
   createdAt: String
+  fichaTrafo: FichaTrafoInput
   servicos: [SRVInput]
   isFinal: Boolean
 }
@@ -60,6 +75,18 @@ input maoDeObraInput {
   motorista: Int
   eletricista: Int
   auxiliar: Int
+}
+input FichaTrafoInput {
+  estf: String
+  estfsucata: String
+  nSerie: String
+  nSucataSerie: String
+  NA: String
+  NB: String
+  NC: String
+  AB: String
+  AC: String
+  BC: String
 }
 
 type Query {
