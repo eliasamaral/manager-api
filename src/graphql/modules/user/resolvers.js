@@ -1,5 +1,5 @@
 import User from "../../../models/User";
-import { ApolloError } from "@apollo/server";
+import { GraphQLError } from "graphql";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -13,40 +13,45 @@ export default {
 
   Mutation: {
     createUser: async (_, { data: { email, senha, name } }) => {
-      const oldEmail = await User.findOne({ email });
+      try {
+        const existingUser = await User.findOne({ email });
 
-      if (oldEmail) {
-        throw new ApolloError(
-          `O email ${email} ja existe`,
-          "USER_ALREADY_EXIST"
+        if (existingUser) {
+          throw new Error("Email já está em uso");
+        }
+
+        let senhaEncriptada = await bcrypt.hash(senha, 10);
+
+        const newUser = new User({
+          email: email.trim().toLowerCase(),
+          senha: senhaEncriptada,
+          name: name,
+        });
+
+        const token = jwt.sign(
+          {
+            user_id: newUser.id,
+            email,
+          },
+          `${process.env.JWT_SECRET}`,
+          { expiresIn: "2h" }
         );
+
+        newUser.token = token;
+
+        const res = await newUser.save();
+
+        return {
+          id: res.id,
+          email: res.email,
+          name: res.name,
+          token: res.token,
+        };
+      } catch (error) {
+        throw new GraphQLError("Erro ao criar a conta.", {
+          extensions: { code: "500" },
+        });
       }
-
-      let senhaEncriptada = await bcrypt.hash(senha, 10);
-
-      const newUser = new User({
-        email: email.trim().toLowerCase(),
-        senha: senhaEncriptada,
-        name: name,
-      });
-
-      const token = jwt.sign(
-        {
-          user_id: newUser.id,
-          email,
-        },
-        `${process.env.JWT_SECRET}`,
-        { expiresIn: "2h" }
-      );
-
-      newUser.token = token;
-
-      const res = await newUser.save();
-
-      return {
-        id: res.id,
-        ...res._doc,
-      };
     },
 
     loginUser: async (_, { loginInput: { matricula, senha } }) => {
@@ -69,7 +74,9 @@ export default {
           ...user._doc,
         };
       } else {
-        throw new ApolloError("Senha incorreta", "INCORRECT_PASSWORD");
+        throw new GraphQLError("Senha ou usuario incorretos.", {
+          extensions: { code: "401" },
+        });
       }
     },
 
@@ -92,16 +99,20 @@ export default {
           ...user._doc,
         };
       } else {
-        throw new ApolloError("Email incorreto", "INCORRECT_EMAIL");
+        throw new GraphQLError("Senha ou usuario incorretos.", {
+          extensions: { code: "401" },
+        });
       }
     },
 
     updateUser: async (_, { _id, data }) => {
       const userWithSameEmail = await User.findOne({ email: data.email });
       if (userWithSameEmail && userWithSameEmail._id.toString() !== _id) {
-        throw new ApolloError(
+        throw new GraphQLError(
           `O email ${data.email} já está sendo usado por outro usuário.`,
-          "EMAIL_ALREADY_EXISTS"
+          {
+            extensions: { code: "409" },
+          }
         );
       }
 
