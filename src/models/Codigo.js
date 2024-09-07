@@ -1,33 +1,31 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const Schema = new mongoose.Schema({
-  codigo: {
-    type: Number,
-    required: true,
-    unique : true,
-  },
-  descricao: {
-    type: String,
-    required: true,
-  },
-  umb:{
-    type: String,
-  },
-  preco: {
-    type: Number,
-  },
-  tipo: {
-    type: String,
-  },
-  fator: {
-    type: Number,
-  },
-  ativo: {
-    default: false,
-    type: Boolean,
-  },
- 
- 
-});
+	codigo: {
+		type: Number,
+		required: true,
+		unique: true,
+	},
+	descricao: {
+		type: String,
+		required: true,
+	},
+	umb: {
+		type: String,
+	},
+	preco: {
+		type: Number,
+	},
+	tipo: {
+		type: String,
+	},
+	fator: {
+		type: Number,
+	},
+	ativo: {
+		default: false,
+		type: Boolean,
+	},
+})
 
-export default mongoose.model("Codigo", Schema);
+export default mongoose.model('Codigo', Schema)
