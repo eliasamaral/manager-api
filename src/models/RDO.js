@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const ClimaSchema = new mongoose.Schema({
 	manha: {
@@ -75,3 +75,4 @@ const Schema = new mongoose.Schema(
 );
 
 export default mongoose.model("RDO", Schema);
+
