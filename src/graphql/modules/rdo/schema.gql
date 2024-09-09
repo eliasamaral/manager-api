@@ -1,93 +1,71 @@
+
 type RDO {
-  _id: ID!
-  projeto: Float
-  diagrama: Float
+  _id: ID
+  projeto: String
   local: String
   encarregado: String
-  dataDaProducao: String
-  maoDeObra: maoDeObra
-  clima: Clima
   observacoes: String
-  createdAt: String
-  fichaTrafo: FichaTrafo
-  servicos: [SRV]
-  isFinal: Boolean
+  clima: Clima
+  dataDaProducao: String
+  atividades: [Atividade]
+  maoDeObra: [MaoDeObra]
 }
 
-type FichaTrafo {
-  estf: String
-  estfsucata: String
-  nSerie: String
-  nSucataSerie: String
-  NA: String
-  NB: String
-  NC: String
-  AB: String
-  AC: String
-  BC: String
-}
-
-type maoDeObra {
-  encarregado: Int
-  motorista: Int
-  eletricista: Int
-  auxiliar: Int
-}
-
-type SRV {
-  _id: ID!
-  codigo: Float
-  descricao: String
-  quantidade: Float
-}
 type Clima {
   manha: String
   tarde: String
 }
 
-input RDOInput {
-  projeto: Float
-  diagrama: Float
-  local: String
-  encarregado: String
-  maoDeObra: maoDeObraInput
-  clima: ClimaInput
-  observacoes: String
-  dataDaProducao: String
-  createdAt: String
-  fichaTrafo: FichaTrafoInput
-  servicos: [SRVInput]
-  isFinal: Boolean
+type Atividade {
+  atividade: String
+  duracao: String
 }
 
-input SRVInput {
-  codigo: Float
-  descricao: String
-  quantidade: Float
+type MaoDeObra {
+  nome: String
+  funcao: String
+  inicio: String
+  fim: String
+}
+
+
+input RDOInput {
+  dataAtual: String
+  projeto: String
+  local: String
+  encarregado: String
+  observacoes: String
+  clima: ClimaInput
+  dataDaProducao: String
+  atividades: [AtividadeInput]
+  maoDeObra: [MaoDeObraInput]
+}
+
+
+input AtividadeInput {
+  atividade: String
+  duracao: String
 }
 
 input ClimaInput {
   manha: String
   tarde: String
 }
+
 input maoDeObraInput {
   encarregado: Int
   motorista: Int
   eletricista: Int
   auxiliar: Int
 }
-input FichaTrafoInput {
-  estf: String
-  estfsucata: String
-  nSerie: String
-  nSucataSerie: String
-  NA: String
-  NB: String
-  NC: String
-  AB: String
-  AC: String
-  BC: String
+
+input MaoDeObraInput {
+  nome: String
+  funcao: String
+  inicio: String
+  fim: String
 }
+
 
 type Query {
   getRDOS: [RDO!]!
