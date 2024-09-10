@@ -52,13 +52,6 @@ input ClimaInput {
   tarde: String
 }
 
-input maoDeObraInput {
-  encarregado: Int
-  motorista: Int
-  eletricista: Int
-  auxiliar: Int
-}
-
 input MaoDeObraInput {
   nome: String
   funcao: String
