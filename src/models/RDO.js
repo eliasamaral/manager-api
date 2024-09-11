@@ -20,7 +20,7 @@ const AtividadeSchema = new mongoose.Schema({
   duracao: {
     type: String,
   },
-  execute: {
+  executante: {
     type: String,
   }
 })
