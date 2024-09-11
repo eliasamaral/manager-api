@@ -19,6 +19,7 @@ type Clima {
 type Atividade {
   atividade: String
   duracao: String
+  executante: String
 }
 
 type MaoDeObra {
@@ -45,6 +46,7 @@ input RDOInput {
 input AtividadeInput {
   atividade: String
   duracao: String
+  executante: String
 }
 
 input ClimaInput {
