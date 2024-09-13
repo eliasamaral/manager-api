@@ -9,6 +9,7 @@ type RDO {
   dataDaProducao: String
   atividades: [Atividade]
   maoDeObra: [MaoDeObra]
+  createdAt: String
 }
 
 type Clima {
@@ -40,6 +41,7 @@ input RDOInput {
   dataDaProducao: String
   atividades: [AtividadeInput]
   maoDeObra: [MaoDeObraInput]
+  createdAt: String
 }
 
 
