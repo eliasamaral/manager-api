@@ -1,5 +1,3 @@
-import { execute } from 'graphql'
-
 const mongoose = require('mongoose')
 
 const ClimaSchema = new mongoose.Schema({
@@ -22,7 +20,7 @@ const AtividadeSchema = new mongoose.Schema({
   },
   executante: {
     type: String,
-  }
+  },
 })
 
 const MaoDeObraSchema = new mongoose.Schema({
@@ -37,6 +35,22 @@ const MaoDeObraSchema = new mongoose.Schema({
   },
   fim: {
     type: String,
+  },
+})
+
+const FerramentaShema = new mongoose.Schema({
+  nome: {
+    type: String,
+  },
+  quantidade: {
+    type: Number,
+  },
+  solicitante: {
+    type: String,
+  },
+
+  ferramentaDevolvida: {
+    type: Boolean,
   },
 })
 
@@ -67,6 +81,7 @@ const Schema = new mongoose.Schema(
     },
     atividades: [AtividadeSchema],
     maoDeObra: [MaoDeObraSchema],
+    ferramentaDevolvida: [FerramentaShema]
   },
   {
     timestamps: true,
