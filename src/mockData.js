@@ -1,4 +1,5 @@
-import { faker } from '@faker-js/faker'
+import { faker, fakerEL } from '@faker-js/faker'
+import { execute } from 'graphql'
 
 const mock = {
   createRDO: {
@@ -16,6 +17,8 @@ const mock = {
       {
         atividade: `${faker.hacker.verb()} ${faker.hacker.noun()}`,
         duracao: `${faker.number.int({ min: 1, max: 6 })}:00`,
+        executante: faker.person.firstName(),
+        valor: `${faker.commerce.price(1, 1000, 2)}`,
       },
     ],
     maoDeObra: [
@@ -27,6 +30,12 @@ const mock = {
       },
     ],
   },
+
+  createActivity: {
+    nome : "Limpeza",
+    descricao: "Limpar ao redor do conteiro",
+    valor: 100,
+  }
 }
 
 export default mock

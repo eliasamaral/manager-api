@@ -1,0 +1,22 @@
+type Activity {
+  id: ID!
+  nome: String
+  valor: Float
+ 
+}
+
+input ActivityInput {
+  nome: String
+  valor: Float
+}
+
+
+type Query {
+  activity(id: ID!): Activity
+  activities: [Activity]
+}
+
+type Mutation {
+  createActivity(data: ActivityInput): Activity
+
+}

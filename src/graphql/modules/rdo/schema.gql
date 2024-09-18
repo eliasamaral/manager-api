@@ -21,6 +21,7 @@ type Atividade {
   atividade: String
   duracao: String
   executante: String
+  valor: Float
 }
 
 type MaoDeObra {
@@ -54,6 +55,8 @@ input AtividadeInput {
   atividade: String
   duracao: String
   executante: String
+    valor: Float
+
 }
 
 input ClimaInput {

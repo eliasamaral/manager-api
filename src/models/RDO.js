@@ -21,6 +21,9 @@ const AtividadeSchema = new mongoose.Schema({
   executante: {
     type: String,
   },
+  valor: {
+    type: Number
+  }
 })
 
 const MaoDeObraSchema = new mongoose.Schema({
