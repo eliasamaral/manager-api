@@ -73,11 +73,10 @@ export default {
           id: user.id,
           ...user._doc,
         }
-      } else {
-        throw new GraphQLError('Senha ou usuario incorretos.', {
-          extensions: { code: '401' },
-        })
       }
+      throw new GraphQLError('Senha ou usuario incorretos.', {
+        extensions: { code: '401' },
+      })
     },
 
     loginFromEmail: async (_, { loginInput: { email } }) => {
@@ -98,11 +97,10 @@ export default {
           id: user.id,
           ...user._doc,
         }
-      } else {
-        throw new GraphQLError('Senha ou usuario incorretos.', {
-          extensions: { code: '401' },
-        })
       }
+      throw new GraphQLError('Senha ou usuario incorretos.', {
+        extensions: { code: '401' },
+      })
     },
 
     updateUser: async (_, { _id, data }) => {

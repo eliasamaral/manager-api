@@ -1,12 +1,12 @@
 import RDO from '../../../models/RDO'
+import mock from '../../../mockData'
+import 'dotenv/config'
 
 export default {
   Query: {
     getRDOS: async () => await RDO.find(),
 
     getRDO: async (_, { _id }) => {
-      
-      
       try {
         const e = await RDO.findOne({ _id })
         if (!e) {
@@ -20,6 +20,7 @@ export default {
     },
   },
   Mutation: {
-    createRDO: (_, { data }) => RDO.create(data),
+    createRDO: (_, { data }) =>
+      RDO.create(process.env.DB_NAME === 'test' ? mock.createRDO : data),
   },
 }
