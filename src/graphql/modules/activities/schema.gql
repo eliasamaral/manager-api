@@ -2,12 +2,15 @@ type Activity {
   id: ID!
   nome: String
   valor: Float
+  descricao: String
  
 }
 
 input ActivityInput {
   nome: String
   valor: Float
+  descricao: String
+
 }
 
 
