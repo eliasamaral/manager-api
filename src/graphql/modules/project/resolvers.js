@@ -1,10 +1,6 @@
-import { config } from 'dotenv'
 import Project from '../../../models/Project'
-import mock from '../../../mockData'
-
 config()
 
-const isTestEnvironment = () => process.env.DB_NAME === 'test'
 
 export default {
   Query: {
@@ -29,7 +25,7 @@ export default {
   Mutation: {
     createProject: async (_, { data }) => {
       try {
-        const projectData = isTestEnvironment() ? mock.createProject : data
+        const projectData = data
         return await Project.create(projectData)
       } catch (error) {
         console.error('Error creating project:', error)

@@ -1,10 +1,8 @@
 import { config } from 'dotenv'
 import Collaborator from '../../../models/Collaborator'
-import mock from '../../../mockData'
 
 config()
 
-const isTestEnvironment = () => process.env.DB_NAME === 'test'
 
 export default {
   Query: {
@@ -29,7 +27,7 @@ export default {
   Mutation: {
     createCollaborator: async (_, { data }) => {
       try {
-        const collaboratorData = isTestEnvironment() ? mock.collaboratorData : data
+        const collaboratorData =  data
         return await Collaborator.create(collaboratorData)
       } catch (error) {
         console.error('Error creating collaborator:', error)

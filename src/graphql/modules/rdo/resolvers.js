@@ -1,5 +1,4 @@
 import RDO from '../../../models/RDO'
-import mock from '../../../mockData'
 import 'dotenv/config'
 
 export default {
@@ -20,7 +19,6 @@ export default {
     },
   },
   Mutation: {
-    createRDO: (_, { data }) =>
-      RDO.create(process.env.DB_NAME === 'test' ? mock.createRDO : data),
+    createRDO: (_, { data }) => RDO.create(data),
   },
 }

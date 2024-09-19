@@ -1,10 +1,7 @@
 import { config } from 'dotenv'
 import Activity from '../../../models/Activity'
-import mock from '../../../mockData'
 
 config()
-
-const isTestEnvironment = () => process.env.DB_NAME === 'test'
 
 export default {
   Query: {
@@ -29,7 +26,7 @@ export default {
   Mutation: {
     createActivity: async (_, { data }) => {
       try {
-        const activityData = isTestEnvironment() ? mock.createActivity : data
+        const activityData = data
         return await Activity.create(activityData)
       } catch (error) {
         console.error('Error creating activity:', error)
