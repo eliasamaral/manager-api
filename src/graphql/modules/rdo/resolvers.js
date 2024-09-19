@@ -1,5 +1,4 @@
 import RDO from '../../../models/RDO'
-import 'dotenv/config'
 
 export default {
   Query: {

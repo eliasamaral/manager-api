@@ -1,7 +1,5 @@
-import { config } from 'dotenv'
 import Collaborator from '../../../models/Collaborator'
 
-config()
 
 
 export default {

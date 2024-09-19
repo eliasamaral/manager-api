@@ -1,7 +1,5 @@
-import { config } from 'dotenv'
 import Activity from '../../../models/Activity'
 
-config()
 
 export default {
   Query: {

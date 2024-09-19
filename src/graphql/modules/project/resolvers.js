@@ -1,6 +1,4 @@
 import Project from '../../../models/Project'
-config()
-
 
 export default {
   Query: {
