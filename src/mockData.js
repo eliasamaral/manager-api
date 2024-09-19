@@ -32,9 +32,9 @@ const mock = {
   },
 
   createActivity: {
-    nome : "Limpeza",
-    descricao: "Limpar ao redor do conteiro",
-    valor: 100,
+    name : "MOCK Limpeza",
+    description: "MOCK impar ao redor do conteiro",
+    price: 100,
   }
 }
 

@@ -1,18 +1,74 @@
+import { config } from 'dotenv'
 import Activity from '../../../models/Activity'
 import mock from '../../../mockData'
 
-require('dotenv').config()
+config()
+
+const isTestEnvironment = () => process.env.DB_NAME === 'test'
 
 export default {
   Query: {
-    activity: async (_, { _id }) => Activity.findById(_id),
-    activities: async () => await Activity.find(),
+    activity: async (_, { _id }) => {
+      try {
+        return await Activity.findById(_id)
+      } catch (error) {
+        console.error('Error fetching activity:', error)
+        throw new Error('Failed to fetch activity')
+      }
+    },
+    activities: async () => {
+      try {
+        return await Activity.find()
+      } catch (error) {
+        console.error('Error fetching activities:', error)
+        throw new Error('Failed to fetch activities')
+      }
+    },
   },
 
   Mutation: {
-    createActivity: async (_, { data }) => 
-      Activity.create(process.env.DB_NAME === 'test' ? mock.createActivity : data)
-    
-    }
+    createActivity: async (_, { data }) => {
+      try {
+        const activityData = isTestEnvironment() ? mock.createActivity : data
+        return await Activity.create(activityData)
+      } catch (error) {
+        console.error('Error creating activity:', error)
+        throw new Error('Failed to create activity')
+      }
+    },
 
-  }
+    updateActivity: async (_, { _id, data }) => {
+      try {
+        const updatedActivity = await Activity.findByIdAndUpdate(
+          _id,
+          { $set: data },
+          { new: true, runValidators: true }
+        )
+
+        if (!updatedActivity) {
+          throw new Error('Activity not found')
+        }
+
+        return updatedActivity
+      } catch (error) {
+        console.error('Error updating activity:', error)
+        throw new Error('Failed to update activity')
+      }
+    },
+
+    deleteActivity: async (_, { _id }) => {
+      try {
+        const deletedActivity = await Activity.findByIdAndDelete(_id)
+
+        if (!deletedActivity) {
+          throw new Error('Activity not found')
+        }
+
+        return true
+      } catch (error) {
+        console.error('Error deleting activity:', error)
+        throw new Error('Failed to delete activity')
+      }
+    },
+  },
+}

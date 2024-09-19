@@ -1,13 +1,13 @@
 import mongoose from 'mongoose'
 
 const Schema = new mongoose.Schema({
-  nome: {
+  name: {
     type: String,
   },
-  descricao: {
+  description: {
     type: String,
   },
-  valor: {
+  price: {
     type: Number,
   },
 })

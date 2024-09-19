@@ -1,25 +1,30 @@
 type Activity {
-  id: ID!
-  nome: String
-  valor: Float
-  descricao: String
- 
+  _id: ID!
+  name: String
+  description: String
+  price: Float
 }
 
 input ActivityInput {
-  nome: String
-  valor: Float
-  descricao: String
+  name: String
+  description: String
+  price: Float
+}
 
+type DeleteResponse {
+  success: Boolean!
+  message: String!
 }
 
 
 type Query {
-  activity(id: ID!): Activity
+  activity(_id: ID!): Activity
   activities: [Activity]
 }
 
 type Mutation {
   createActivity(data: ActivityInput): Activity
+  updateActivity(_id: ID!, data: ActivityInput): Activity
+  deleteActivity(_id: ID!): Boolean
 
 }
