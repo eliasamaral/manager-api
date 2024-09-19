@@ -1,0 +1,23 @@
+type Collaborator {
+  _id: ID!
+  name: String
+  hh: Float
+}
+
+input CollaboratorInput {
+  name: String
+  hh: Float
+}
+
+
+type Query {
+  collaborator(_id: ID!): Collaborator
+  collaborators: [Collaborator]
+}
+
+type Mutation {
+  createCollaborator(data: CollaboratorInput): Collaborator
+  updateCollaborator(_id: ID!, data: CollaboratorInput): Collaborator
+  deleteCollaborator(_id: ID!): Boolean
+
+}

@@ -1,0 +1,37 @@
+type Project {
+  _id: ID!
+  project: String
+  location: String
+  activities: [Activities]
+}
+
+type Activities {
+  _id: ID!
+  activity: String,
+  price: Float,
+
+}
+input ProjectInput {
+  project: String
+  location: String
+  activities: [ActivitiesInput]
+}
+
+input ActivitiesInput {
+  activity: String,
+  price: Float,
+
+}
+
+
+type Query {
+  project(_id: ID!): Project
+  projects: [Project]
+}
+
+type Mutation {
+  createProject(data: ProjectInput): Project
+  updateProject(_id: ID!, data: ProjectInput): Project
+  deleteProject(_id: ID!): Boolean
+
+}

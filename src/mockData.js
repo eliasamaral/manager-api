@@ -32,10 +32,26 @@ const mock = {
   },
 
   createActivity: {
-    name : "MOCK Limpeza",
-    description: "MOCK impar ao redor do conteiro",
+    name: 'MOCK Limpeza',
+    description: 'MOCK impar ao redor do conteiro',
     price: 100,
-  }
+  },
+
+  collaboratorData: {
+    name: 'MOCK Elias',
+    hh: 10,
+  },
+
+  createProject: {
+    project: 'MOCK São Pedro',
+    location: 'MOCK São Pedro',
+    activities: [
+      {
+        activity: "Limpeza",
+        price: 3.4,
+      },
+    ],
+  },
 }
 
 export default mock
