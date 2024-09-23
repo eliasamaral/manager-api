@@ -1,6 +1,5 @@
 import Activity from '../../../models/Activity'
 
-
 export default {
   Query: {
     activity: async (_, { _id }) => {
@@ -14,6 +13,15 @@ export default {
     activities: async () => {
       try {
         return await Activity.find()
+      } catch (error) {
+        console.error('Error fetching activities:', error)
+        throw new Error('Failed to fetch activities')
+      }
+    },
+
+    activitiesFromIDs: async (_, { _ids }) => {
+      try {
+        return await Activity.find({ _id: { $in: _ids } })
       } catch (error) {
         console.error('Error fetching activities:', error)
         throw new Error('Failed to fetch activities')
