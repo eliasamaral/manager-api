@@ -2,7 +2,7 @@ type Project {
   _id: ID!
   project: String
   location: String
-  activities: [Activities]
+  activities: [String!]
 }
 
 type Activities {
@@ -14,13 +14,7 @@ type Activities {
 input ProjectInput {
   project: String
   location: String
-  activities: [ActivitiesInput]
-}
-
-input ActivitiesInput {
-  activity: String,
-  price: Float,
-
+  activities:[String!]
 }
 
 

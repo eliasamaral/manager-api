@@ -1,14 +1,5 @@
 import mongoose from 'mongoose'
 
-const ActivitiesSchema = new mongoose.Schema({
-  activity: {
-    type: String,
-  },
-  price: {
-    type: Number,
-  },
-})
-
 const Schema = new mongoose.Schema({
   project: {
     type: String,
@@ -18,7 +9,10 @@ const Schema = new mongoose.Schema({
     type: String,
   },
 
-  activities: [ActivitiesSchema],
+  activities: {
+    type: [String],
+    default: [],
+  },
 })
 
 export default mongoose.model('Project', Schema)
