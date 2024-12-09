@@ -39,12 +39,12 @@ type Ferramentas {
 }
 
 input RDOInput {
-  projeto: String!
-  local: String!
-  encarregado: String!
+  projeto: String
+  local: String
+  encarregado: String
   observacoes: String
   clima: ClimaInput
-  dataDaProducao: String!
+  dataDaProducao: String
   atividades: [AtividadeInput]
   maoDeObra: [MaoDeObraInput]
   ferramentaDevolvida: [FerramentasInput]
