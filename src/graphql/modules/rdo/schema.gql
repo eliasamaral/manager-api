@@ -6,10 +6,18 @@ type RDO {
   observacoes: String
   clima: Clima
   dataDaProducao: String
-  atividades: [Atividade]
+  atividades: [Atividade] 
   maoDeObra: [MaoDeObra]
-  ferramentaDevolvida: [Ferramentas]
   createdAt: String
+  files: [File]
+}
+
+type File {
+  id: ID
+  reportID: String
+  name: String
+  url: String
+  description: String
 }
 
 type Clima {
@@ -18,10 +26,9 @@ type Clima {
 }
 
 type Atividade {
-  atividade: String
-  duracao: String
-  executante: String
-  valor: Float
+  id: ID
+  duration: String
+  description: String
 }
 
 type MaoDeObra {
@@ -29,13 +36,6 @@ type MaoDeObra {
   funcao: String
   inicio: String
   fim: String
-}
-
-type Ferramentas {
-  nome: String
-  quantidade: Float
-  solicitante: String
-  ferramentaDevolvida: Boolean
 }
 
 input RDOInput {
@@ -47,15 +47,22 @@ input RDOInput {
   dataDaProducao: String
   atividades: [AtividadeInput]
   maoDeObra: [MaoDeObraInput]
-  ferramentaDevolvida: [FerramentasInput]
   createdAt: String
+  files: [FileInput]
+}
+
+input FileInput {
+  id: ID
+  name: String
+  reportID: String
+  url: String
+    description: String
+
 }
 
 input AtividadeInput {
-  atividade: String
-  duracao: String
-  executante: String
-    valor: Float
+  duration: String
+  description: String
 
 }
 
@@ -71,12 +78,7 @@ input MaoDeObraInput {
   fim: String
 }
 
-input FerramentasInput {
-  nome: String
-  quantidade: Float
-  solicitante: String
-  ferramentaDevolvida: Boolean
-}
+
 
 type Query {
   getRDOS: [RDO!]!

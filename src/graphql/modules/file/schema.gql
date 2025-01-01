@@ -1,13 +1,14 @@
 type File {
-  _id: ID!
-  activityId: String
+  id: ID!
+  reportId: String
   url: String
+  description: String
 }
 
 input FileInput {
-  activityId: String
+  reportId: String
   url: String
-
+  description: String
 }
 
 type Query {
@@ -17,4 +18,5 @@ type Query {
 
 type Mutation {
   generateSignedUrl( key: String!, contentType: String!): String!
+  createdFile(data: FileInput): File
 }
