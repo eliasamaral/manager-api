@@ -4,9 +4,9 @@ export default {
   Query: {
     getReports: async () => await Report.find(),
 
-    getReport: async (_, { _id }) => {
+    getReport: async (_, { id }) => {
       try {
-        const report = await Report.findOne({ _id })
+        const report = await Report.findOne({ id })
         if (!report) {
           throw new Error('relatorio não encontrado')
         }

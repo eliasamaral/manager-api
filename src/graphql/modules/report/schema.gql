@@ -6,20 +6,20 @@ type Report {
   morning_weather_condition: String!
   afternoon_weather_condition: String!
   observations: String
-  activities: [Activity!]
-  collaborators: [Collaborator!]
+  activities: [ActivityReport!]
+  members: [Members!]
 }
 
-type Activity {
+type ActivityReport {
   id: String
   duration: String!
   description: String
 }
 
-type Collaborator {
-  name: String!
-  startTime: String!
-  endTime: String!
+type Members {
+  name: String
+  start_time: String
+  end_time: String
   description: String
 }
 
@@ -31,28 +31,26 @@ input ReportInput {
   morning_weather_condition: String!
   afternoon_weather_condition: String!
   observations: String
-  activities: [ActivityInput]
-  collaborators: [CollaboratorInput]
+  activities: [ActivityReportInput]
+  members: [MembersInput]
 }
 
-input ActivityInput {
+input ActivityReportInput {
   id: String
   duration: String
   description: String
 }
 
-input CollaboratorInput {
+input MembersInput {
   name: String
   start_time: String
   end_time: String
   description: String
 }
 
-
-
 type Query {
-  getReports: [RDO!]!
-  getReport(id: ID!): RDO!
+  getReports: [Report!]!
+  getReport(id: String!): Report!
 }
 
 
