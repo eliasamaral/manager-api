@@ -1,0 +1,59 @@
+type Report {
+  id: String!
+  project: String!
+  leader: String!
+  report_date: String!
+  morning_weather_condition: String!
+  afternoon_weather_condition: String!
+  observations: String
+  activities: [ActivityReport!]
+  members: [Members!]
+}
+
+type ActivityReport {
+  id: String
+  duration: String!
+  description: String
+}
+
+type Members {
+  name: String
+  start_time: String
+  end_time: String
+  description: String
+}
+
+input ReportInput {
+  id: String!
+  project: String!
+  leader: String!
+  report_date: String!
+  morning_weather_condition: String!
+  afternoon_weather_condition: String!
+  observations: String
+  activities: [ActivityReportInput]
+  members: [MembersInput]
+}
+
+input ActivityReportInput {
+  id: String
+  duration: String
+  description: String
+}
+
+input MembersInput {
+  name: String
+  start_time: String
+  end_time: String
+  description: String
+}
+
+type Query {
+  getReports: [Report!]!
+  getReport(id: String!): Report!
+}
+
+
+type Mutation {
+  createReport(data: ReportInput!): Report!
+}

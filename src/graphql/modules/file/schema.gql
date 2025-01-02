@@ -1,0 +1,22 @@
+type File {
+  id: ID!
+  reportId: String
+  url: String
+  description: String
+}
+
+input FileInput {
+  reportId: String
+  url: String
+  description: String
+}
+
+type Query {
+  file(_id: ID!): File
+}
+
+
+type Mutation {
+  generateSignedUrl( key: String!, contentType: String!): String!
+  createdFile(data: FileInput): File
+}
